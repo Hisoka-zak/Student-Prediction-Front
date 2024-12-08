@@ -54,7 +54,7 @@ const [showPassword, setShowPassword] = useState(false); // State for toggling p
   useEffect(() => {
     if (isAuthenticated) {
       axios
-        .get("http://localhost:8080/api/courses")
+        .get("https://student-prediction-db.onrender.com/api/courses")
         .then((response) => {
           setCourses(response.data);
         })
@@ -78,7 +78,7 @@ const [showPassword, setShowPassword] = useState(false); // State for toggling p
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/courses")
+      .get("https://student-prediction-db.onrender.com/api/courses")
       .then((response) => {
         setCourses(response.data);
       })
@@ -97,7 +97,7 @@ const [showPassword, setShowPassword] = useState(false); // State for toggling p
   
     try {
       // Fetch datasets for the selected course
-      const response = await axios.get("http://localhost:8080/api/datasets/filter", {
+      const response = await axios.get("https://student-prediction-db.onrender.com/api/datasets/filter", {
         params: { course },
       });
       const datasets = response.data;
@@ -140,7 +140,7 @@ const [showPassword, setShowPassword] = useState(false); // State for toggling p
       formData.append("file", file);
       formData.append("course_name", courses.find((courseItem) => courseItem._id === course)?.name);
   
-      const uploadResponse = await axios.post("http://127.0.0.1:5000/upload", formData, {
+      const uploadResponse = await axios.post("https://student-prediction-ml.onrender.com/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
   
@@ -213,7 +213,7 @@ const [showPassword, setShowPassword] = useState(false); // State for toggling p
     // Fetch course details to validate assessments
     let courseDetails;
     try {
-        const res = await axios.get(`http://localhost:8080/api/courses/${course}`);
+        const res = await axios.get(`https://student-prediction-db.onrender.com/api/courses/${course}`);
         courseDetails = res.data;
     } catch (error) {
         showMessage("error", "Failed to fetch course details. Please try again.");
@@ -259,7 +259,7 @@ if (unmatchedColumns.length > 0) {
     };
 
     try {
-        const res = await axios.put("http://localhost:8080/api/add-dataset", payload);
+        const res = await axios.put("https://student-prediction-db.onrender.com/api/add-dataset", payload);
         showMessage("success", res.data.message);
         setIsOverlayVisible(true); // Show overlay on success
     } catch (error) {
@@ -271,7 +271,7 @@ if (unmatchedColumns.length > 0) {
             if (shouldAppend) {
                 try {
                     payload.concat = true; // Enable appending
-                    const appendRes = await axios.put("http://localhost:8080/api/add-dataset", payload);
+                    const appendRes = await axios.put("https://student-prediction-db.onrender.com/api/add-dataset", payload);
                     showMessage("success", appendRes.data.message);
                     setIsOverlayVisible(true); // Show overlay on append success
                 } catch (appendError) {
