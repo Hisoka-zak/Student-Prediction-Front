@@ -12,7 +12,7 @@ export default function DownloadData() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/api/datasets/filter')
+      .get('https://student-prediction-db.onrender.com/api/datasets/filter')
       .then((response) => {
         setDatasets(response.data);
         setFilteredData(response.data);
