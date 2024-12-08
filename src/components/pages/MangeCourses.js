@@ -159,7 +159,7 @@ const InsertCourses = () => {
         const course = courses.find((c) => c.name === courseName);
         if (course) {
           await axios.put(
-            `http://localhost:8080/api/updateCourse/${course._id}`,
+            `https://student-prediction-db.onrender.com/api/updateCourse/${course._id}`,
             courseData
           );
           alert("Course updated successfully!");
@@ -187,7 +187,7 @@ const InsertCourses = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/courses")
+      .get("https://student-prediction-db.onrender.com/api/courses")
       .then((response) => {
         setCourses(response.data);
       })
@@ -205,7 +205,7 @@ const InsertCourses = () => {
   useEffect(() => {
     if (isAuthenticated) {
       axios
-        .get("http://localhost:8080/api/courses")
+        .get("https://student-prediction-db.onrender.com/api/courses")
         .then((response) => {
           setCourses(response.data);
         })
