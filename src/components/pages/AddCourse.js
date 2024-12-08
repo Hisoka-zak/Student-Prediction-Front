@@ -43,11 +43,11 @@ const AddCourse = () => {
       code: courseCode,
     };
     try {
-      const response = await axios.post("http://localhost:8080/api/addCourse", newCourse);
+      const response = await axios.post("https://student-prediction-db.onrender.com/api/addCourse", newCourse);
       showModal(response.data.message);
       setCourseName("");
       setCourseCode("");
-      const updatedCourses = await axios.get("http://localhost:8080/api/courses");
+      const updatedCourses = await axios.get("https://student-prediction-db.onrender.com/api/courses");
       setCourses(updatedCourses.data);
     } catch (error) {
       console.error("Error adding course:", error);
@@ -62,12 +62,12 @@ const AddCourse = () => {
       code: courseCode,
     };
     try {
-      const response = await axios.put(`http://localhost:8080/api/updateCourse/${courseId}`, updatedCourse);
+      const response = await axios.put(`https://student-prediction-db.onrender.com/api/updateCourse/${courseId}`, updatedCourse);
       showModal(response.data.message);
       setCourseName("");
       setCourseCode("");
       setCourseId("");
-      const updatedCourses = await axios.get("http://localhost:8080/api/courses");
+      const updatedCourses = await axios.get("https://student-prediction-db.onrender.com/api/courses");
       setCourses(updatedCourses.data);
     } catch (error) {
       console.error("Error updating course:", error);
@@ -78,10 +78,10 @@ const AddCourse = () => {
   const handleDeleteCourse = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.delete(`http://localhost:8080/api/deleteCourse/${courseId}`);
+      const response = await axios.delete(`https://student-prediction-db.onrender.com/api/deleteCourse/${courseId}`);
       showModal(response.data.message);
       setCourseId("");
-      const updatedCourses = await axios.get("http://localhost:8080/api/courses");
+      const updatedCourses = await axios.get("https://student-prediction-db.onrender.com/api/courses");
       setCourses(updatedCourses.data);
     } catch (error) {
       console.error("Error deleting course:", error);
