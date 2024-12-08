@@ -158,7 +158,7 @@ const DatasetPrediction = () => {
       formData.append('course_name', course);
       formData.append('prediction_only', 'true');
 
-      const res = await axios.post('http://127.0.0.1:5000/upload', formData, {
+      const res = await axios.post('https://student-prediction-ml.onrender.com/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
