@@ -127,7 +127,7 @@ const StudentsPrediction = () => {
   
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/courses")
+      .get("https://student-prediction-db.onrender.com/api/courses")
       .then((response) => {
         setCourses(response.data);
       })
