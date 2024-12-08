@@ -112,7 +112,7 @@ const StudentsPrediction = () => {
     }
   
     try {
-      const res = await axios.post("http://127.0.0.1:5000/predict", {
+      const res = await axios.post("https://student-prediction-ml.onrender.com/predict", {
         course_name: selectedCourse.name,
         inputs: filteredMarks,
       });
